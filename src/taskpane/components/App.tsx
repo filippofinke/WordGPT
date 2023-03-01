@@ -4,7 +4,7 @@ import { Configuration, OpenAIApi } from "openai";
 import Center from "./Center";
 import Container from "./Container";
 import Login from "./Login";
-/* global Word, localStorage */
+/* global Word, localStorage, navigator */
 
 export default function App() {
   const [apiKey, setApiKey] = React.useState<string>("");
@@ -52,9 +52,14 @@ export default function App() {
 
   const onInsert = async () => {
     await Word.run(async (context) => {
-      context.document.body.insertHtml(generatedText, "Start");
+      const selection = context.document.getSelection();
+      selection.insertText(generatedText, "Start");
       await context.sync();
     });
+  };
+
+  const onCopy = async () => {
+    navigator.clipboard.writeText(generatedText);
   };
 
   return (
@@ -91,6 +96,9 @@ export default function App() {
               <Center>
                 <DefaultButton iconProps={{ iconName: "Add" }} onClick={onInsert}>
                   Insert text
+                </DefaultButton>
+                <DefaultButton iconProps={{ iconName: "Copy" }} onClick={onCopy}>
+                  Copy text
                 </DefaultButton>
               </Center>
             </div>
