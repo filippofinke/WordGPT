@@ -31,6 +31,10 @@ To get started with WordGPT, you will need to sideload the add-in into Microsoft
 
 To sideload WordGPT, you will need to follow the instructions provided by Microsoft. You can find these instructions at the following link: https://learn.microsoft.com/en-us/office/dev/add-ins/testing/sideload-office-add-ins-for-testing
 
+### Windows
+
+Follow this guide https://learn.microsoft.com/en-us/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins
+
 ### MacOS
 
 To sideload WordGPT on MacOS you can follow theses steps:
