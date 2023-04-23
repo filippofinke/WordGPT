@@ -1,6 +1,11 @@
 {
   "name": "wordgpt",
   "version": "0.0.1",
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/filippofinke/wordgpt"
@@ -62,6 +67,7 @@
     "office-addin-prettier-config": "^1.2.0",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
+    "semantic-release": "^21.0.1",
     "source-map-loader": "^3.0.0",
     "ts-loader": "^9.4.1",
     "typescript": "^4.3.5",
