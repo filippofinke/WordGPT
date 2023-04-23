@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DefaultButton, ProgressIndicator, TextField } from "@fluentui/react";
+import { DefaultButton, MessageBar, MessageBarType, ProgressIndicator, TextField } from "@fluentui/react";
 import { Configuration, OpenAIApi } from "openai";
 import Center from "./Center";
 import Container from "./Container";
@@ -9,6 +9,7 @@ import Login from "./Login";
 export default function App() {
   const [apiKey, setApiKey] = React.useState<string>("");
   const [prompt, setPrompt] = React.useState<string>("");
+  const [error, setError] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
   const [generatedText, setGeneratedText] = React.useState<string>("");
 
@@ -30,6 +31,7 @@ export default function App() {
   const saveApiKey = (key) => {
     setApiKey(key);
     localStorage.setItem("apiKey", key);
+    setError("");
   };
 
   const onClick = async () => {
@@ -44,6 +46,7 @@ export default function App() {
         temperature: 0.7,
       });
     } catch (error) {
+      setError(error.message);
       setApiKey("");
     }
     setLoading(false);
@@ -107,6 +110,7 @@ export default function App() {
       ) : (
         <Login onSave={saveApiKey} />
       )}
+      {error && <MessageBar messageBarType={MessageBarType.error}>{error}</MessageBar>}
     </Container>
   );
 }
